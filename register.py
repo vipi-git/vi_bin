@@ -25,30 +25,37 @@ def load_member_data():
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    confirmation_message = None
+    confirmation_class = None
     if request.method == 'POST':
         first_name = request.form['first_name']
         last_name = request.form['last_name']
         email = request.form['email']
         schedule = request.form['schedule']  # Get the chosen schedule
+        existing_members = load_member_data()
+        if any(member['email'] == email for member in existing_members):
+            confirmation_message = f"Registration failed. The email '{email}' is already registered."
+            confirmation_class = "registration-failed"  # Set the CSS class for failed registration
+        else:
+            # Create a new member dictionary with the chosen schedule
+            member = {
+                'first_name': first_name,
+                'last_name': last_name,
+                'email': email,
+                'schedule': schedule
+            }
 
-        # Create a new member dictionary
-        member = {
-            'first_name': first_name,
-            'last_name': last_name,
-            'email': email,
-            'schedule': schedule  # Include the chosen schedule
-        }
+            # Add the new member to the data
+            existing_members.append(member)
 
-        # Load existing data and add the new member
-        members = load_member_data()
-        members.append(member)
+            # Save the updated data
+            save_member_data(existing_members)
 
-        # Save the updated data
-        save_member_data(members)
+            # Set the confirmation message and CSS class for successful registration
+            confirmation_message = f"Registration for {first_name} {last_name} is successful!"
+            confirmation_class = "registration-success"
 
-        return redirect(url_for('index'))
-
-    return render_template('index.html', members=load_member_data())
+    return render_template('index.html', members=load_member_data(), confirmation_message=confirmation_message, confirmation_class=confirmation_class)
 
 
 if __name__ == '__main__':

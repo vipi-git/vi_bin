@@ -28,6 +28,27 @@
             margin: 0 auto;
             max-width: 400px;
         }
+        .confirmation-message {
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .confirmation-message.registration-failed {
+            background-color: #FF5733; /* Red background for failed registration */
+            color: white;
+        }
+
+        .confirmation-message.registration-success {
+            background-color: #4CAF50; /* Green background for successful registration */
+            color: white;
+        }
+
+        .confirmation-message p {
+            margin: 0;
+        }
+
 
         label {
             display: block;
@@ -104,6 +125,11 @@
         
         <input type="submit" value="Register">
     </form>
+    {% if confirmation_message %}
+    <div class="confirmation-message {{ confirmation_class }}">
+        <p>{{ confirmation_message }}</p>
+    </div>
+    {% endif %}
     <h2>Registered Team Members:</h2>
     <table>
         <tr>
