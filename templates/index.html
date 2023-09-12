@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Technical Training Session Registration</title>
+    <title>T<sup>4</sup> Training Session Registration</title>
     <style>
         body {
             background: linear-gradient(to bottom, #0074D9, #FFFFFF);
@@ -47,6 +47,9 @@
 
         .confirmation-message p {
             margin: 0;
+        }
+        .space {
+            margin-bottom: 20px; /* Adjust the margin to control the spacing */
         }
 
 
@@ -107,6 +110,12 @@
 </head>
 <body>
     <h1>Registration for Troubleshooting XYZ Session</h1>
+    {% if confirmation_message %}
+    <div class="confirmation-message {{ confirmation_class }}">
+        <p>{{ confirmation_message }}</p>
+    </div>
+    {% endif %}
+    <div class="blank-line"></div>
     <form class="registration-form" method="POST">
         <label for="first_name">First Name:</label>
         <input type="text" name="first_name" required>
@@ -125,11 +134,6 @@
         
         <input type="submit" value="Register">
     </form>
-    {% if confirmation_message %}
-    <div class="confirmation-message {{ confirmation_class }}">
-        <p>{{ confirmation_message }}</p>
-    </div>
-    {% endif %}
     <h2>Registered Team Members:</h2>
     <table>
         <tr>

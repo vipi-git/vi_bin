@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Server IP Collector</title>
+</head>
+<body>
+    <h1>Server IP Collector</h1>
+    <form id="serverForm">
+        <textarea name="server_list" id="serverList" rows="5" cols="40" placeholder="Enter server list (one per line)"></textarea>
+        <br>
+        <input type="submit" value="Collect IPs">
+    </form>
+    
+    <div id="progress">
+        <!-- Status updates for each server will appear here -->
+    </div>
+    
+    <a id="downloadLink" style="display: none;" href="/download_csv">Download CSV</a>
+    
+    <script>
+        var eventSource = new EventSource('/collect_ips');
+        
+        eventSource.onmessage = function(event) {
+            var statusData = JSON.parse(event.data);
+            var serverName = statusData.server;
+            var status = statusData.status;
+            
+            // Update the HTML element with the status
+            var statusElement = document.createElement('div');
+            statusElement.textContent = serverName + ': ' + status;
+            document.getElementById('progress').appendChild(statusElement);
+        };
+        
+        eventSource.onerror = function(event) {
+            eventSource.close();
+        };
+        
+        document.getElementById('serverForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('progress').innerHTML = 'Processing servers...';
+        });
+    </script>
+</body>
+</html>
