@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sysadmin Survey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .survey-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #0073e6;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #0073e6;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #005bbf;
+        }
+        p.thank-you {
+            text-align: center;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="survey-container">
+        <h1>Sysadmin Survey</h1>
+        
+        {% if thank_you_message %}
+            <p class="thank-you">{{ thank_you_message }}</p>
+        {% endif %}
+        
+        <form method="POST" action="/">
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name" required>
+
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" name="email" required>
+
+            <label for="task1">Top Task to Automate:</label>
+            <input type="text" name="task1" required>
+
+            <label for="task2">Second Task to Automate:</label>
+            <input type="text" name="task2" required>
+
+            <label for="task3">Third Task to Automate:</label>
+            <input type="text" name="task3" required>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
