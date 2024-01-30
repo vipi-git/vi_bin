@@ -1,3 +1,28 @@
+
+Subject: Introducing ttool: Your Network Troubleshooting Ally
+
+Dear Esteemed  Users,
+
+We are thrilled to introduce ttool, a cutting-edge tool designed to empower you with independent network data capture capabilities, reducing reliance on abc 
+🚀 **Key Features:**
+
+1. **Autonomy Awaits:** Bid farewell to waiting on abc. Seize control and effortlessly capture the network insights you require with TCPDump Self-Service.
+
+2. **Effortless Setup:** Enable this powerful tool in two simple steps:
+   - **Step 1:** Grant kb access for the wrapper script.
+   - **Step 2:** Utilize our streamlined u p Installation Portal to install ttt.
+
+3. **Next-Level Functionality:** The inaugural version allows you to capture traffic based on IP and Port. Excitingly, upcoming releases will introduce additional features, including capturing traffic based on a combination of IP and Port.
+
+Ready to elevate your troubleshooting experience? Embark on the journey of TCPDump Self-Service. For assistance, please consult our Knowledge Base [insert Knowledge Base link] and Confluence [insert Confluence link].
+
+We appreciate your collaboration as we strive to enhance your Unix environment.
+
+Warm regards,
+
+
+
+№####№#######
 Subject: Important Update: Registration for Technical Training - Topic 1
 
 Dear Team Members,
